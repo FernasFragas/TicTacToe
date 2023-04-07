@@ -93,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       // GestureDetector detects when a cell is tapped,
                       // and it updates the state of the game board accordingly.
                       GestureDetector(
-                        //onTap: () => makeMove(i, j),
+                        //onTap: () => ,
                         child: Container(
                           width: 70.0,
                           height: 70.0,
