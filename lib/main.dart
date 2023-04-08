@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tictactoeflutterapp/tictactoestates.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,7 +52,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // holds the current state of the Tic Tac Toe game board
   // Each element in the list corresponds to a cell on the board
-  late List<List<String>> board;
+  late TicTacToeState game;
+  late List<List<TicTacToePlayer>> board;
 
   // this method is called when the widget is first created
   @override
@@ -60,10 +62,11 @@ class _MyHomePageState extends State<MyHomePage> {
     startNewGame();
   }
 
-  // sets up a new game by generating a new 2D list of strings
+  // sets up a new game by generating a new 2D list of tictactoeplayer
   // with 3 rows and 3 columns, each initialized to an empty string
   void startNewGame() {
-    board = List.generate(3, (_) => List.filled(3, ''));
+    board = List.generate(3, (i) => List.generate(3, (j) => TicTacToePlayer.None));
+    game = TicTacToeState(board: board, currentPlayer: TicTacToePlayer.O, message: "");
   }
 
   // This method is called to build the user interface of the app.
@@ -107,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             // Text widget in each cell displays the X or O symbol
                             // that corresponds to the current state of the game board.
                             child: Text(
-                              board[i][j],
+                               board[i][j].name,
                               style: const TextStyle(
                                 fontSize: 40.0,
                                 fontWeight: FontWeight.bold,
