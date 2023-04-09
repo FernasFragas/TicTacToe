@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             // Text widget in each cell displays the X or O symbol
                             // that corresponds to the current state of the game board.
                             child: Text(
-                              board[i][j].name,
+                              TicTacToePlayerEnumMap.getValue(board[i][j].name),
                               style: const TextStyle(
                                 fontSize: 40.0,
                                 fontWeight: FontWeight.bold,
