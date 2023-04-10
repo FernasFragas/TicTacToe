@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tictactoeflutterapp/tictactoestates.dart';
+import 'package:tictactoeflutterapp/tictactoe_board.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -49,44 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Colors.grey[300],
             borderRadius: BorderRadius.circular(5.0),
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              for (int i = 0; i < 3; i++)
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    for (int j = 0; j < 3; j++)
-                      // GestureDetector detects when a cell is tapped,
-                      // and it updates the state of the game board accordingly.
-                      GestureDetector(
-                        //onTap: () => ,
-                        child: Container(
-                          width: 70.0,
-                          height: 70.0,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.grey,
-                              width: 2.0,
-                            ),
-                          ),
-                          child: Center(
-                            // Text widget in each cell displays the X or O symbol
-                            // that corresponds to the current state of the game board.
-                            child: Text(
-                              TicTacToePlayerEnumMap.getValue(board[i][j].name),
-                              style: const TextStyle(
-                                fontSize: 40.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                  ],
-                ),
-            ],
-          ),
+          child: tictactoeBoard(context,board)
         ))
     );
   }
