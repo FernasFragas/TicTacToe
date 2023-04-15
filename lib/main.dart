@@ -16,7 +16,9 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final Key? key;
+
+  const MyApp({this.key});
 
   // This widget is the root of your application.
   @override
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.grey,
       ),
-      home: const MyHomePage(title: 'Tic Tac Toe Home Page'),
+      home: MyHomePage(key: key, title: 'Tic Tac Toe Home Page'),
     );
   }
 }
