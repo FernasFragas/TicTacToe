@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tictactoeflutterapp/ticTacToeBolc.dart';
+import 'package:tictactoeflutterapp/tictTacToeView.dart';
 
-import 'home_page.dart';
 
 void main() {
   {
@@ -17,9 +19,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   final Key? key;
-
   const MyApp({this.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -35,9 +35,12 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.teal,
       ),
-      home: MyHomePage(key: key, title: 'Tic Tac Toe Home Page'),
+      home: BlocProvider<TicTacToeBloc>(
+        create: (context) => TicTacToeBloc(),
+        child: TicTacToeView(),
+      )
     );
   }
 }
